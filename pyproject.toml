@@ -1,0 +1,19 @@
+[project]
+name = "digital-wallet-api"
+version = "0.1.0"
+description = "Production-style digital wallet & financial transaction backend built with FastAPI"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+# B008: FastAPI idiom (Query() defaults); UP042: str-Enum needed for JSON/SQLAlchemy compat
+ignore = ["B008", "UP042"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+addopts = "-q --cov=app --cov-report=term-missing"
